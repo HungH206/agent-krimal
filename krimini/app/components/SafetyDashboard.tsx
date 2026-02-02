@@ -183,7 +183,7 @@ const SafetyDashboard: React.FC = () => {
             <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div className={`max-w-[80%] space-y-2`}>
                 <div className={`p-4 rounded-2xl text-sm leading-relaxed ${
-                  msg.role === 'user' ? 'bg-indigo-600 text-white rounded-tr-none' : 'bg-slate-800/80 text-slate-200 border border-slate-700 rounded-tl-none'
+                  msg.role === 'user' ? 'bg-indigo-600 text-white rounded-tr-none' : 'bg-slate-800/80 text-slate-100 border border-slate-700 rounded-tl-none'
                 }`}>
                   {msg.content}
                 </div>
@@ -215,7 +215,7 @@ const SafetyDashboard: React.FC = () => {
             <input 
               type="text" value={inputText} onChange={e => setInputText(e.target.value)}
               placeholder="Message Crimini Intelligence..."
-              className="w-full bg-slate-950 border border-slate-700 rounded-xl py-3.5 px-5 text-sm focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all pr-12"
+              className="w-full bg-slate-950 border border-slate-700 rounded-xl py-3.5 px-5 text-sm focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all pr-12 text-slate-100 placeholder:text-slate-400"
             />
             <button type="submit" className="absolute right-2 top-1.5 w-10 h-10 bg-indigo-600 hover:bg-indigo-500 rounded-lg flex items-center justify-center transition-all">
               <i className="fa-solid fa-paper-plane text-xs"></i>
@@ -239,16 +239,16 @@ const SafetyDashboard: React.FC = () => {
                   !safetyStatus ? 'bg-slate-800' : 
                   safetyStatus.score > 75 ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-red-500/10 border-red-500/30'
                 }`}>
-                  <div className="text-[10px] font-bold text-slate-500 mb-1 uppercase tracking-widest">Safety Analysis</div>
-                  <div className="text-3xl font-black">{safetyStatus?.score || '--'}</div>
-                  <p className="text-[11px] mt-2 text-slate-300 italic">&ldquo;{safetyStatus?.summary}&rdquo;</p>
+                   <div className="text-[10px] font-bold text-indigo-300 mb-1 uppercase tracking-widest">Safety Analysis</div>
+                  <div className="text-3xl font-black text-white">{safetyStatus?.score || '--'}</div>
+                  <p className="text-[11px] mt-2 text-slate-100 italic">&ldquo;{safetyStatus?.summary}&rdquo;</p>
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar">
                 {chatMessages.slice(-5).map((msg, i) => (
                   <div key={i} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                     <div className={`max-w-[90%] p-3 rounded-xl text-[11px] ${
-                      msg.role === 'user' ? 'bg-indigo-600/80 text-white' : 'bg-slate-800 text-slate-300'
+                      msg.role === 'user' ? 'bg-indigo-600/80 text-white' : 'bg-slate-800 text-slate-100'
                     }`}>
                       {msg.content}
                     </div>
@@ -259,7 +259,7 @@ const SafetyDashboard: React.FC = () => {
                 <input 
                   type="text" value={inputText} onChange={e => setInputText(e.target.value)}
                   placeholder="Quick query..."
-                  className="w-full bg-slate-850 border border-slate-700 rounded-lg py-2 px-3 text-[11px] focus:ring-1 focus:ring-indigo-500 outline-none"
+                  className="w-full bg-slate-850 border border-slate-700 rounded-lg py-2 px-3 text-[11px] focus:ring-1 focus:ring-indigo-500 outline-none text-slate-100 placeholder:text-slate-400"
                 />
               </form>
             </aside>
@@ -272,7 +272,7 @@ const SafetyDashboard: React.FC = () => {
                 {safetyStatus?.recommendations.map((rec, i) => (
                   <div key={i} className="min-w-[240px] glass-morphism p-3 rounded-lg border border-indigo-500/10 flex flex-col justify-center">
                     <span className="text-[9px] font-bold text-indigo-400 mb-1">STRATEGY 0{i+1}</span>
-                    <p className="text-[11px] text-slate-300 leading-tight font-medium">{rec}</p>
+                    <p className="text-[11px] text-slate-100 leading-tight font-medium">{rec}</p>
                   </div>
                 ))}
               </div>
@@ -317,14 +317,14 @@ const SafetyDashboard: React.FC = () => {
               <i className="fa-solid fa-triangle-exclamation text-2xl animate-pulse"></i>
               <h3 className="text-xl font-black uppercase tracking-tighter">Emergency Dispatch</h3>
             </div>
-            <div className="bg-slate-950 p-5 rounded-xl mb-6 text-sm italic border-l-4 border-red-600 text-slate-300 leading-relaxed shadow-inner">
+           <div className="bg-slate-950 p-5 rounded-xl mb-6 text-sm italic border-l-4 border-red-600 text-slate-100 leading-relaxed shadow-inner">
               &ldquo;{emergencyDraft}&rdquo;
             </div>
             <div className="flex flex-col gap-3">
               <button className="w-full bg-red-600 hover:bg-red-500 text-white py-4 rounded-xl font-black text-sm shadow-lg shadow-red-600/20 transition-all uppercase tracking-widest">
                 CONFIRM & SEND ALERT
               </button>
-              <button onClick={() => setEmergencyDraft(null)} className="w-full text-slate-500 py-2 text-xs font-bold hover:text-slate-300">
+              <button onClick={() => setEmergencyDraft(null)} className="w-full text-slate-200 py-2 text-xs font-bold hover:text-slate-100">
                 CANCEL REQUEST
               </button>
             </div>
